@@ -16,6 +16,7 @@ rm -rf /tmp/luci-*
 
 sed -i '/S99opkg/d' /etc/crontabs/root
 echo "0 4 * * * sh /etc/rc.d/S99opkg >/tmp/opkgupdate.log 2>&1" >> /etc/crontabs/root
+echo "30 04 * * * sleep 5 && touch /etc/banner && reboot" >> /etc/crontabs/root
 
 uci set system.@rngd[0].enabled="1"
 uci commit system
